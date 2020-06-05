@@ -56,10 +56,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogLimit, blogSkip, route
   const showAllBlogs = () => {
     return blogs.map((blog, i) => {
       return (
-        <article key={i}>
-          <Card blog={blog}/>
-          <hr />
-        </article>
+          <Card key={i} blog={blog}/>
       );
     });
   };
@@ -67,7 +64,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogLimit, blogSkip, route
   const showAllCategories = () => {
     return categories.map((c, i) => (
       <Link href={`/categories/${c.slug}`} key={i}>
-        <a className="btn btn-primary mr-1 ml-1 mt-3">{c.name}</a>
+        <a className="post-category text-white bg-secondary mb-3 ml-3">{c.name}</a>
       </Link>
     ));
   };
@@ -82,11 +79,9 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogLimit, blogSkip, route
 
   const showLoadedBlogs = () => {
     return loadedBlogs.map((blog, i) => (
-      <article key={i} >
-        <Card blog={blog} />
-      </article>
-    ))
-  }
+        <Card key={i} blog={blog} />
+    ));
+  };
 
   return (
     <React.Fragment>
@@ -101,15 +96,20 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogLimit, blogSkip, route
               <section>
                 <div className="pb-5 text-center">
                   {showAllCategories()}
-                  <br />
-                  {showAllTags()}
                 </div>
               </section>
             </header>
           </div>
-          <div className="container-fluid">{showAllBlogs()}</div>
-          <div className="container-fluid">{showLoadedBlogs()}</div>
-          <div className="text-center py-5">{loadMoreButton()}</div>
+          <div className="container">
+            <div className="row">
+              {showAllBlogs()}
+            </div>
+            <div className="row">
+              {showLoadedBlogs()}
+            </div>
+            <div className="text-center py-5">{loadMoreButton()}</div>
+          </div>
+            
         </main>
       </Layout>
     </React.Fragment>
@@ -118,7 +118,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogLimit, blogSkip, route
 
 Blogs.getInitialProps = () => {
   let skip = 0;
-  let limit = 2;
+  let limit = 6;
   return listBlogsWithCategoriesAndTags(skip, limit).then(data => {
     if(data.error) {
       console.log(data.error);

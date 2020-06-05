@@ -31,9 +31,6 @@ const UserIndex = () => {
 
               </ul>
             </div>
-            <div className="col-md-8">
-              right
-            </div>
           </div>
         </div>
       </Private>

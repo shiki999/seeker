@@ -7,16 +7,11 @@ import {signout, isAuth} from '../actions/auth';
 import {
   Collapse,
   Navbar,
-  NavbarToggler,
   NavbarBrand,
+  NavbarToggler,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText
+  NavLink
 } from 'reactstrap';
 import '.././node_modules/nprogress/nprogress.css';
 import Search from '../components/blog/Search';
@@ -32,26 +27,45 @@ const Header = () => {
 
   return (
     <React.Fragment>
-      <Navbar color="light" light expand="md">
-        <Link href="/">
-          <NavLink className="font-weight-bold">{APP_NAME}</NavLink>
-        </Link>
+      <Navbar color="faded" light expand="md" style={{cursor: 'pointer'}}>
+        <NavbarBrand href="/" className="text-black h2 mb-0">
+          {APP_NAME}
+        </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="ml-auto" navbar>
+          <Nav className="text-black h5 mb-0 ml-auto" navbar>
             <React.Fragment>
               <NavItem>
                 <Link href="/blogs">
                   <NavLink>
-                    Blogs
+                    All
                   </NavLink>
                 </Link>
               </NavItem>
-
+            </React.Fragment>
+            <React.Fragment>
               <NavItem>
-                <Link href="/contact">
+                <Link href="/categories/cat1">
                   <NavLink>
-                    Contact
+                    Cat1
+                  </NavLink>
+                </Link>
+              </NavItem>
+            </React.Fragment>
+            <React.Fragment>
+              <NavItem>
+                <Link href="/categories/cat2">
+                  <NavLink>
+                    Cat2
+                  </NavLink>
+                </Link>
+              </NavItem>
+            </React.Fragment>
+            <React.Fragment>
+              <NavItem>
+                <Link href="/categories/cat3">
+                  <NavLink>
+                    Cat3
                   </NavLink>
                 </Link>
               </NavItem>
@@ -66,20 +80,13 @@ const Header = () => {
                     </NavLink>
                   </Link>
                 </NavItem>
-                <NavItem>
-                  <Link href="/signup">
-                    <NavLink>
-                      Signup
-                    </NavLink>
-                  </Link>
-                </NavItem>
               </React.Fragment>
             )}
 
             {isAuth() && isAuth().role === 0 && (
               <NavItem>
                   <NavLink href="/user">
-                    {`${isAuth().name}'s Dashboard`}
+                    Dashboard
                   </NavLink>
               </NavItem>
             )}
@@ -87,27 +94,18 @@ const Header = () => {
             {isAuth() && isAuth().role === 1 && (
               <NavItem>
                   <NavLink href="/admin">
-                    {`${isAuth().name}'s Dashboard`}
+                    Dashboard
                   </NavLink>
               </NavItem>
             )}
 
             {isAuth() && (
               <NavItem>
-                <NavLink style={{cursor: 'pointer'}} onClick={() => signout(() => Router.replace(`/signin`))}>
+                <NavLink onClick={() => signout(() => Router.replace(`/signin`))}>
                   Signout
                 </NavLink>
               </NavItem>
             )}
-
-            <NavItem>
-              <Link href="/user/crud/blog">
-                <NavLink className="btn btn-primary text-light">
-                  Create Blog
-                </NavLink>
-              </Link>
-            </NavItem>
-
           </Nav>
         </Collapse>
       </Navbar>

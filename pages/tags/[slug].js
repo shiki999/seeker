@@ -30,11 +30,15 @@ const Tag = ({ tag, blogs, query }) => {
       {head()}
       <Layout>
         <main>
-          <div className="container-fluid text-center">
+          <div className="container-fluid">
             <header>
               <div className="col-md-12 pt-3">
-                <h1 className="display-4 font-weight-bold">{tag.name}</h1>
-                {blogs.map((b, i) => <Card key={i} blog={b} />)}
+                <h1 className="display-4 font-weight-bold mb-5 text-center">{tag.name}</h1>
+                <div className="container">
+                  <div className="row">
+                    {blogs.map((b, i) => <Card key={i} blog={b} />)}
+                  </div>
+                </div>
               </div>
             </header>
           </div>
