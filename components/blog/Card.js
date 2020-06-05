@@ -28,7 +28,7 @@ const Card = ({blog}) => {
               </h2>
               <div className="post-meta align-items-center text-left clearfix">
                 <figure className="author-figure mb-0 mr-3 float-left">
-                  <img src={`./static/images/person_1.jpg`} alt="Image" className="img-fluid" />
+                  <img src={`${API}/user/photo/${blog.postedBy.username}`} alt="Image" className="img-fluid" />
                 </figure>
                 <span className="d-inline-block mt-1">By <Link href={`/profile/${blog.postedBy.username}`}><a>{blog.postedBy.username}</a></Link></span>
                 <span>&nbsp;-&nbsp; Published {moment(blog.updatedAt).fromNow()}</span>
