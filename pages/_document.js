@@ -11,6 +11,7 @@ class MyDocument extends Document {
             rel="stylesheet" 
             href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/css/bootstrap.min.css" 
           />
+          <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet" />
           <link 
             rel="stylesheet" 
             href="/static/css/styles.css" 

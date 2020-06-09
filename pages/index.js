@@ -6,6 +6,8 @@ import { useState } from 'react';
 import { listBlogsWithCategoriesAndTags } from '../actions/blog';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../config';
 import Card from '../components/blog/Card';
+import BigCard from '../components/blog/BigCard';
+
 
 const Index = ({ blogs, categories, tags, totalBlogs, blogLimit, blogSkip, router }) => {
   const head = () => (
@@ -54,8 +56,8 @@ const Index = ({ blogs, categories, tags, totalBlogs, blogLimit, blogSkip, route
     return (
       size > 0 && 
       size >= limit && 
-      (<button onClick={loadMore} className="btn btn-outline-primary btn-lg">
-        Load more
+      (<button onClick={loadMore} className="load-btn btn btn-primary btn-lg">
+        See more
       </button>)
     )
   }
@@ -94,62 +96,23 @@ const Index = ({ blogs, categories, tags, totalBlogs, blogLimit, blogSkip, route
       <React.Fragment>
           {head()}
           <Layout>
-            <section className="site-section bg-light">
+            <section className="site-section pb-0">
                 <div className="container">
-                  <div className="row align-items-stretch retro-layout-2">
-                    <div className="col-md-4">
-                      <Link href={`/categories/cat1`}>
-                        <a className="h-entry mb-30 v-height gradient" style={{backgroundImage: `url('./static/images/img_1.jpg')`}}>
-                          <div className="text">
-                            <h2>Cat1</h2>
-                          </div>
-                        </a>
-                      </Link>
-                        
-                      <Link href={`/categories/cat2`}>
-                        <a className="h-entry v-height gradient" style={{backgroundImage: `url('./static/images/img_2.jpg')`}}>
-                          <div className="text">
-                            <h2>Cat2</h2>
-                          </div>
-                        </a>
-                      </Link>
-                      
-                    </div>
-                    <div className="col-md-4">
-                      <Link href={`/categories/cat3`}>
-                        <a  className="h-entry img-5 h-100 gradient" style={{backgroundImage: `url('./static/images/img_v_2.jpg')`}}>
-                          <div className="text">
-                            <h2>Cat3</h2>
-                          </div>
-                        </a>
-                      </Link>
-                    </div>
-                    <div className="col-md-4">
-                      <Link href={`/categories/cat4`}>
-                        <a className="h-entry mb-30 v-height gradient" style={{backgroundImage: `url('./static/images/img_3.jpg')`}}>
-                          <div className="text">
-                            <h2>Cat4</h2>
-                          </div>
-                        </a>
-                      </Link>
-                      <Link href={`/categories/cat5`}>
-                        <a className="h-entry v-height gradient" style={{backgroundImage: `url('./static/images/img_4.jpg')`}}>
-                          <div className="text">
-                            <h2>Cat5</h2>
-                          </div>
-                        </a>
-                      </Link>
-                    </div>
+                  <div className="col-12 pb-3">
+                    <h2>Lastest Blogs</h2>
                   </div>
+                  <div className="row">
+                    <BigCard blog={blogs[0]}/>
+                    <BigCard blog={blogs[1]}/>
+                  </div>
+                  <hr />
                 </div>
             </section>
           
-            <section className="site-section">
+            <section className="site-section pt-0">
               <div className="container">
                 <div className="row mb-5">
-                  <div className="col-12">
-                    <h2>Recent Posts</h2>
-                  </div>
+
                 </div>
                   <div className="row">
                     {showAllBlogs()}
@@ -167,7 +130,7 @@ const Index = ({ blogs, categories, tags, totalBlogs, blogLimit, blogSkip, route
 
 Index.getInitialProps = () => {
   let skip = 0;
-  let limit = 3;
+  let limit = 6;
   return listBlogsWithCategoriesAndTags(skip, limit).then(data => {
     if(data.error) {
       console.log(data.error);

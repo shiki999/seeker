@@ -47,7 +47,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogLimit, blogSkip, route
       return (
         size > 0 && 
         size >= limit && 
-        (<button onClick={loadMore} className="btn btn-outline-primary btn-lg">
+        (<button onClick={loadMore} className="btn load-btn btn-primary btn-lg">
           Load more
         </button>)
       )
@@ -87,30 +87,28 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogLimit, blogSkip, route
     <React.Fragment>
       {head()}
       <Layout>
-        <main>
-          <div className="container-fluid">
-            <header>
-              <div className="col-md-12 pt-3">
-                <h1 className="display-4 font-weight-bold text-center">Career Blogs and coaching</h1>
-              </div>
-              <section>
-                <div className="pb-5 text-center">
-                  {showAllCategories()}
-                </div>
-              </section>
-            </header>
-          </div>
+        <section className="site-section pb-0">
           <div className="container">
-            <div className="row">
-              {showAllBlogs()}
+            <div className="col-12 pb-3">
+              <h2>All articles</h2>
             </div>
-            <div className="row">
-              {showLoadedBlogs()}
-            </div>
-            <div className="text-center py-5">{loadMoreButton()}</div>
           </div>
-            
-        </main>
+        </section>
+    
+        <section className="site-section pt-0">
+          <div className="container">
+            <div className="row mb-5">
+
+            </div>
+              <div className="row">
+                {showAllBlogs()}
+              </div>
+              <div className="row">
+                {showLoadedBlogs()}
+              </div>
+            <div className="text-center py-5">{loadMoreButton()}</div>
+            </div>
+        </section>
       </Layout>
     </React.Fragment>
   );

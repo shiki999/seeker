@@ -29,20 +29,25 @@ const Category = ({ category, blogs, query }) => {
     <React.Fragment>
       {head()}
       <Layout>
-        <main>
-          <div className="container-fluid">
-            <header>
-              <div className="col-md-12 pt-3">
-                <h1 className="display-4 font-weight-bold mb-5 text-center">{category.name}</h1>
-                <div className="container">
-                  <div className="row">
-                    {blogs.map((b, i) => <Card key={i} blog={b} />)}
-                 </div>
-                </div>
-              </div>
-            </header>
+        <section className="site-section pb-0">
+          <div className="container">
+            <div className="col-12 pb-3">
+              <h2>{category.name}</h2>
+            </div>
           </div>
-        </main>
+        </section>
+    
+        <section className="site-section pt-0">
+          <div className="container">
+            <div className="row mb-5">
+
+            </div>
+              <div className="row">
+                {blogs.map((b, i) => <Card key={i} blog={b} />)}
+              </div>
+            </div>
+        </section>
+        
       </Layout>
     </React.Fragment>
   );

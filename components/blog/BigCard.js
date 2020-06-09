@@ -3,7 +3,7 @@ import renderHTML from 'react-render-html';
 import moment from 'moment';
 import {API} from '../../config';
 
-const Card = ({blog}) => {
+const BigCard = ({blog}) => {
   const showBlogCategories = blog =>
     blog.categories.map((c, i) => (
       <Link key={i} href={`/categories/${c.slug}`}>
@@ -12,7 +12,7 @@ const Card = ({blog}) => {
     ));
 
   return (
-      <div className="col-lg-4 mb-4">
+      <div className="col-lg-6 mb-4">
         <Link href={`/blogs/${blog.slug}`}><a>  
           <div className="entry2">
             <img src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} className="img-fluid " />
@@ -37,4 +37,4 @@ const Card = ({blog}) => {
   );
 };
 
-export default Card;
+export default BigCard;

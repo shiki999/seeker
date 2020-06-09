@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { APP_NAME } from '../config';
+import { DOMAIN, APP_NAME } from '../config';
 import Link from 'next/link';
 import Router from 'next/router';
 import NProgress from 'nprogress';
@@ -27,89 +27,31 @@ const Header = () => {
 
   return (
     <React.Fragment>
-      <Navbar color="faded" light expand="md" style={{cursor: 'pointer'}}>
-        <NavbarBrand href="/" className="text-black h2 mb-0">
-          {APP_NAME}
-        </NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="text-black h5 mb-0 ml-auto" navbar>
-            <React.Fragment>
-              <NavItem>
-                <Link href="/blogs">
-                  <NavLink>
-                    All
-                  </NavLink>
+        <header className="site-navbar py-3" role="banner">
+          <div className="container-fluid">
+            <div className="row align-items-center">
+              <div className="col-4 site-logo">
+                <Link href="/">
+                  <a className="text-black h2 mb-0"><img src={`${DOMAIN}/static/images/seeker-logo.png`} style={{height: 67.4}} alt={APP_NAME}/></a>
                 </Link>
-              </NavItem>
-            </React.Fragment>
-            <React.Fragment>
-              <NavItem>
-                <Link href="/categories/cat1">
-                  <NavLink>
-                    Cat1
-                  </NavLink>
-                </Link>
-              </NavItem>
-            </React.Fragment>
-            <React.Fragment>
-              <NavItem>
-                <Link href="/categories/cat2">
-                  <NavLink>
-                    Cat2
-                  </NavLink>
-                </Link>
-              </NavItem>
-            </React.Fragment>
-            <React.Fragment>
-              <NavItem>
-                <Link href="/categories/cat3">
-                  <NavLink>
-                    Cat3
-                  </NavLink>
-                </Link>
-              </NavItem>
-            </React.Fragment>
-
-            {!isAuth() && (
-              <React.Fragment>
-                <NavItem>
-                  <Link href="/signin">
-                    <NavLink>
-                      Signin
-                    </NavLink>
-                  </Link>
-                </NavItem>
-              </React.Fragment>
-            )}
-
-            {isAuth() && isAuth().role === 0 && (
-              <NavItem>
-                  <NavLink href="/user">
-                    Dashboard
-                  </NavLink>
-              </NavItem>
-            )}
-
-            {isAuth() && isAuth().role === 1 && (
-              <NavItem>
-                  <NavLink href="/admin">
-                    Dashboard
-                  </NavLink>
-              </NavItem>
-            )}
-
-            {isAuth() && (
-              <NavItem>
-                <NavLink onClick={() => signout(() => Router.replace(`/signin`))}>
-                  Signout
-                </NavLink>
-              </NavItem>
-            )}
-          </Nav>
-        </Collapse>
-      </Navbar>
-      <Search />
+              </div>
+              <div className="col-8 text-right">
+                <nav className="site-navigation" role="navigation">
+                  <ul className="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
+                    <li><Link href="/blogs"><a>All Articles</a></Link></li>
+                    <li><Link href="/categories/cat1"><a>Category1</a></Link></li>
+                    <li><Link href="/categories/cat2"><a>Category2</a></Link></li>
+                    <li><Link href="/categories/cat3"><a>Category3</a></Link></li>
+                    {!isAuth() && (<li><Link href="/signin"><a>Signin</a></Link></li>)}
+                    {isAuth() && isAuth().role === 0 && (<li><Link href="/user"><a>Dashboard</a></Link></li>)}
+                    {isAuth() && isAuth().role === 1 && (<li><Link href="/admin"><a>Dashboard</a></Link></li>)}
+                    {isAuth() && (<li><a onClick={() => signout(() => Router.replace(`/signin`))}>Signout</a></li>)}
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </header>
     </React.Fragment>
   );
 };
