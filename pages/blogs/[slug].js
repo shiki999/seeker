@@ -109,10 +109,10 @@ const SingleBlog = ({ blog, query }) => {
             </div>
 
             <section className="site-section">
-              <div class="container">
-                <div class="row blog-entries element-animate">
-                  <div class="col-md-8 mx-auto main-content">
-                    <div class="post-content-body">
+              <div className="container">
+                <div className="row blog-entries element-animate">
+                  <div className="col-md-8 mx-auto main-content">
+                    <div className="post-content-body">
                       {renderHTML(blog.body)}
                     </div>
                   </div>
