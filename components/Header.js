@@ -39,9 +39,9 @@ const Header = () => {
                 <nav className="site-navigation" role="navigation">
                   <ul className="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
                     <li><Link href="/blogs"><a>All Articles</a></Link></li>
-                    <li><Link href="/categories/cat1"><a>Category1</a></Link></li>
-                    <li><Link href="/categories/cat2"><a>Category2</a></Link></li>
-                    <li><Link href="/categories/cat3"><a>Category3</a></Link></li>
+                    <li><Link href="/categories/tim-viec"><a>Tìm Việc</a></Link></li>
+                    <li><Link href="/categories/phat-trien-ban-than"><a>Phát Triển Bản Thân</a></Link></li>
+                    <li><Link href="/categories/xu-huong"><a>Xu Hướng</a></Link></li>
                     {!isAuth() && (<li><Link href="/signin"><a>Signin</a></Link></li>)}
                     {isAuth() && isAuth().role === 0 && (<li><Link href="/user"><a>Dashboard</a></Link></li>)}
                     {isAuth() && isAuth().role === 1 && (<li><Link href="/admin"><a>Dashboard</a></Link></li>)}

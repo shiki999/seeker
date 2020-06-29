@@ -199,7 +199,7 @@ const CreateBlog = ({router}) => {
               
               <small className="text-muted">Max size: 1MB</small>
               <label className="btn btn-outline-info">
-                Upload featured image>
+                Upload featured image
                 <input onChange={handleChange('photo')} type="file" accept="image/*" hidden/>
               </label>
             </div>

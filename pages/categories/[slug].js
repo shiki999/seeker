@@ -12,8 +12,8 @@ const Category = ({ category, blogs, query }) => {
     <Head>
       <title>{category.name} | {APP_NAME} </title>
       <meta name="description" content={`Best contents on ${category.name}`} />
-      <link rel="canonical" href={`${DOMAIN}/categories/${query.slug}`}/>
-      <meta property="og:title" content={`${category.name} | ${APP_NAME}`}/>
+      <link rel="canonical" href={`${DOMAIN}/categories/${query.slug}`} />
+      <meta property="og:title" content={`${category.name} | ${APP_NAME}`} />
       <meta property="og:description" content={`Best contents on ${category.name}`} />
       <meta property="og:type" content="website" />
       <meta property="og:image:secure_url" content={`${DOMAIN}/static/images/careerblog.jpg`} />
@@ -36,18 +36,18 @@ const Category = ({ category, blogs, query }) => {
             </div>
           </div>
         </section>
-    
+
         <section className="site-section pt-0">
           <div className="container">
             <div className="row mb-5">
 
             </div>
-              <div className="row">
-                {blogs.map((b, i) => <Card key={i} blog={b} />)}
-              </div>
+            <div className="row">
+              {blogs.map((b, i) => <Card key={i} blog={b} />)}
             </div>
+          </div>
         </section>
-        
+
       </Layout>
     </React.Fragment>
   );
@@ -55,7 +55,7 @@ const Category = ({ category, blogs, query }) => {
 
 Category.getInitialProps = ({ query }) => {
   return singleCategory(query.slug).then(data => {
-    if(data.error) {
+    if (data.error) {
       console.log(data.error);
     } else {
       return { category: data.category, blogs: data.blogs, query };

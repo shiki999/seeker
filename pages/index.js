@@ -102,8 +102,8 @@ const Index = ({ blogs, categories, tags, totalBlogs, blogLimit, blogSkip, route
                     <h2>Lastest Blogs</h2>
                   </div>
                   <div className="row">
-                    <BigCard blog={blogs[0]}/>
-                    <BigCard blog={blogs[1]}/>
+                    <BigCard blog={blogs[10]}/>
+                    <BigCard blog={blogs[11]}/>
                   </div>
                   <hr />
                 </div>

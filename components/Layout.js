@@ -1,10 +1,10 @@
 import Header from './Header';
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   return (
     <React.Fragment>
       <Header />
-        {children}
+      {children}
     </React.Fragment>
   );
 };
